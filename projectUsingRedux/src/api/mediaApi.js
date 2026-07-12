@@ -10,6 +10,6 @@ export async function fetchPhotos(query,page=1,per_page=20){
             Authorization:`Client-ID ${UNSPLASH_KEY}`
         },    
     })
-    console.log(res)
+    return res.data;
     
 }
