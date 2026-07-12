@@ -1,4 +1,4 @@
-import { fetchPhotos } from "./api/mediaApi"
+import { fetchPhotos, fetchVideos } from "./api/mediaApi"
 
 export const App = () => {
 
@@ -9,6 +9,12 @@ export const App = () => {
         const data = await fetchPhotos("nature")
         console.log(data)}
         }>Get Photos</button>
+
+        <button className="bg-emerald-800 text-amber-700"
+        onClick={async ()=>{
+          const data = await fetchVideos("nature")
+          console.log(data)
+        }}>Get videos</button>
       
     </div>
   )
