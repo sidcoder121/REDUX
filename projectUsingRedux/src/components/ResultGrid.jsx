@@ -96,7 +96,7 @@ export const ResultGrid = () => {
     }
 
     return (
-        <div className="p-4 w-full">
+        <div className="bg-gray-950 p-4 w-full">
             {loading && (
                 <div className="text-center py-8">
                     <p className="text-gray-500 animate-pulse">Searching for {activeTab.toLowerCase()} matching "{query}"...</p>
@@ -114,10 +114,10 @@ export const ResultGrid = () => {
                     <p className="text-gray-400">No {activeTab.toLowerCase()} found for "{query}". Try another keyword.</p>
                 </div>
             )}
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className=' bg-gray-950 w-full' >
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {results && results.map((item) => (
-                    <div key={item.id} className="group relative border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-black flex flex-col justify-between h-64">
+                    <div key={item.id} className="group relative border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-gray-900 flex flex-col justify-between h-64">
                         
                         {/* Container click opens the full-size media viewer */}
                         <div 
@@ -175,6 +175,7 @@ export const ResultGrid = () => {
 
                     </div>
                 ))}
+            </div>
             </div>
 
             {/* LIGHTBOX MODAL: Full Size Media Preview Layer */}
