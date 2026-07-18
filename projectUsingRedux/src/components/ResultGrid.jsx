@@ -10,18 +10,42 @@ export const ResultGrid = () => {
     // 2. FIX: Ensure activeTab matches your Redux state name (assuming 'activeTab' based on Tabs.jsx)
     const { query, loading, activeTab, results, error } = useSelector((store) => store.search)
    
-    const getdata = async () => {
+
+    useEffect(function(){
+        const getdata = async () => {
+        let data;
         if (activeTab === 'Photos') {
-            const data = await fetchPhotos(query)
-            console.log(data)
-            // You'll likely want to dispatch your results here:
-            // dispatch(setResults(data))
+            let response = await fetchPhotos(query)     
+            data = response.results.map((item)=>({
+                id:item.id,
+                type:'photo',
+                title:item.alt_description,
+                thumbnail:items.urls.small,
+                src:items.urls.full
+
+            }))
         }
+         if (activeTab === 'Videos') {
+            let response = await fetchVideos(query)
+            data = response.videos.map((item)=>({
+                id:item.id,
+                type:'video',
+                title:item.user.name || 'video',
+                thumbnail:items.image,
+                src:items.video_files[0].link
+
+            }))
+           
+        }
+       dispatch(setResults(data))
     }
+        getdata()
+    },[query,activeTab])
+
 
     return (
         <div>
-            <button onClick={getdata}>Get DATA</button>
+           
         </div>
     )
 }
